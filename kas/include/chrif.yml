@@ -1,0 +1,13 @@
+header :
+  version : 14
+
+repos:
+  meta-chrif:
+    path: meta-chrif
+
+  meta-chrif-bsp:
+    path: meta-chrif-bsp
+
+
+  meta-chrif-distro:
+    path: meta-chrif-distro
