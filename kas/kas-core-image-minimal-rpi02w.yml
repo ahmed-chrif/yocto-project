@@ -5,5 +5,5 @@ header:
     - kas/include/common.yml
     - kas/include/chrif.yml
 machine: raspberrypi0-2w-64
-distro:  nodistro
+distro:  "chrif"
 target: core-image-minimal

@@ -16,5 +16,5 @@ local_conf_header:
       DL_DIR = "/mnt/storage/yocto/downloads"
       SSTATE_DIR = "/mnt/storage/yocto/sstate-cache"
       TMPDIR = "${TOPDIR}/tmp"
-      BB_NUMBER_THREADS = "4"
-      PARALLEL_MAKE = "-j 4"
+      BB_NUMBER_THREADS = "2"
+      PARALLEL_MAKE = "-j 2"
