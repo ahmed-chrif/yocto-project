@@ -4,4 +4,4 @@ includes:
   - kas/include/common.yml
 machine: raspberrypi0-2w-64
 distro: "chrif"
-target: core-image-minimal
+target: core-image-base

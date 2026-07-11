@@ -16,5 +16,10 @@ local_conf_header:
       DL_DIR = "/mnt/storage/yocto/downloads"
       SSTATE_DIR = "/mnt/storage/yocto/sstate-cache"
       TMPDIR = "${TOPDIR}/tmp"
-      BB_NUMBER_THREADS = "2"
-      PARALLEL_MAKE = "-j 2"
+      BB_NUMBER_THREADS = "4"
+      PARALLEL_MAKE = "-j 4"
+      PARALLEL_MAKE:append = " -l 6"
+      #do not ecrase the build history on each build, but keep it in the sstate cache
+      INHERIT += "buildhistory"
+      #to know differences between builds, useful for debugging
+      BUILDHISTORY_COMMIT = "1"
