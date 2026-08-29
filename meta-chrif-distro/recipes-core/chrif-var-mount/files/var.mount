@@ -1,0 +1,14 @@
+[Unit]
+Description=Chrif persistent /var (btrfs)
+Before=local-fs.target
+After=systemd-udev-settle.service
+DefaultDependencies=no
+
+[Mount]
+What=/dev/disk/by-label/var
+Where=/var
+Type=btrfs
+Options=defaults,noatime
+
+[Install]
+WantedBy=local-fs.target

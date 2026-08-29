@@ -1,7 +1,8 @@
 header:
   version: 14
-includes:
-  - kas/include/common.yml
+  includes:
+    - kas/include/common.yml
+    - kas/include/chrif.yml
 machine: raspberrypi0-2w-64
 distro: "chrif"
-target: core-image-base
+target: core-image-minimal

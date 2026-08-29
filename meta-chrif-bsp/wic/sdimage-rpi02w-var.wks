@@ -1,0 +1,17 @@
+# Raspberry Pi Zero 2 W – boot + rootfs + shared /var
+# Same runtime view as Avocado active MBR:
+#   p1 = boot (FAT)
+#   p2 = rootfs
+#   p3 = var  (btrfs, expand later)
+
+part /boot --source bootimg-partition --ondisk mmcblk0 \
+    --fstype=vfat --label boot --active --align 4096 --size 128
+
+part / --source rootfs --ondisk mmcblk0 \
+    --fstype=ext4 --label rootfs --align 4096 --size 1024
+
+# Pre-built btrfs from chrif-image-var (Avocado-style var image)
+part /var --source rawcopy \
+    --sourceparams="file=chrif-image-var-${MACHINE}.btrfs" \
+    --ondisk mmcblk0 --fstype=btrfs --label var --part-name var \
+    --align 4096 --size 512

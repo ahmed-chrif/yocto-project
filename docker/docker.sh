@@ -43,11 +43,9 @@ do_prepare_env() {
 do_kas_action() {
     local action="$1"
     local yml="$2"
-
-    if ! kas-container --runtime-args "--volume /mnt/storage:/mnt/storage" "$action" "$yml"; then
-        echo "[x] Failed to ${action} the kas file."
-        exit 1
-    fi
+    kas-container --runtime-args "--volume /mnt/storage:/mnt/storage" "$action" "$yml"
+    exit 1
+    
 }
 
 main() {
