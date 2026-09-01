@@ -21,5 +21,7 @@ local_conf_header:
       PARALLEL_MAKE:append = " -l 6"
       #do not ecrase the build history on each build, but keep it in the sstate cache
       INHERIT += "buildhistory"
-      #to know differences between builds, useful for debugging
-      BUILDHISTORY_COMMIT = "1"
+      # Force meta-raspberrypi to append enable_uart=1 to config.txt
+      ENABLE_UART = "1"
+      # Map high-speed PL011 UART to GPIO 14/15 by disabling Bluetooth (Recommended)
+      RPI_EXTRA_CONFIG = "dtoverlay=disable-bt"

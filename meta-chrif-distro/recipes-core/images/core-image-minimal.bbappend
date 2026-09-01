@@ -11,10 +11,18 @@ WIC_CREATE_EXTRA_ARGS = "--no-fstab-update"
 # Ensure the pre-built var btrfs image is in DEPLOY_DIR_IMAGE before WIC runs
 do_image_wic[depends] += "chrif-image-var:do_deploy"
 
-# Keep an empty /var directory in the rootfs as mountpoint
+# Keep mountpoint while preserving opkg database required by OE postinst checks
 ROOTFS_POSTPROCESS_COMMAND:append = " chrif_empty_var;"
+
 chrif_empty_var() {
-    rm -rf ${IMAGE_ROOTFS}/var/*
-    # leave the directory itself so the mount point exists
+    # Delete everything inside /var EXCEPT /var/lib
+    find ${IMAGE_ROOTFS}/var -mindepth 1 -maxdepth 1 ! -name 'lib' -exec rm -rf {} +
+    
+    # Inside /var/lib, delete everything EXCEPT /var/lib/opkg
+    if [ -d "${IMAGE_ROOTFS}/var/lib" ]; then
+        find ${IMAGE_ROOTFS}/var/lib -mindepth 1 -maxdepth 1 ! -name 'opkg' -exec rm -rf {} +
+    fi
+
+    # Ensure empty target mountpoint exists
     mkdir -p ${IMAGE_ROOTFS}/var
 }
