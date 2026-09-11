@@ -1,19 +1,12 @@
-FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
-SRC_URI:append = " file://zram-generator.conf"
+# Raspberry Pi: no UKI. systemd 258 still builds package systemd-ukify with
+# RDEPENDS on python3-pefile / python3-pyzstd (not in scarthgap OE-Core).
+# Clear them so core-image-minimal can parse without meta-python.
 
-do_install:append () {
-    install -m 0644 ${WORKDIR}/zram-generator.conf ${D}${sysconfdir}/systemd/
+RDEPENDS:${PN}-ukify = ""
+RDEPENDS:systemd-ukify = ""
 
-    # Mask upstream systemd-sysext/confext units.
-    # Avocado replaces these with avocado-extension.service and
-    # avocado-extension-initrd.service (via avocadoctl).
-    # The sysext socket has a static symlink in
-    # /lib/systemd/system/sockets.target.wants/ that bypasses presets,
-    # so masking (-> /dev/null) is required.
-    install -d ${D}${sysconfdir}/systemd/system
-    ln -sf /dev/null ${D}${sysconfdir}/systemd/system/systemd-sysext.socket
-    ln -sf /dev/null ${D}${sysconfdir}/systemd/system/systemd-sysext.service
-    ln -sf /dev/null ${D}${sysconfdir}/systemd/system/systemd-sysext-initrd.service
-    ln -sf /dev/null ${D}${sysconfdir}/systemd/system/systemd-confext.socket
-    ln -sf /dev/null ${D}${sysconfdir}/systemd/system/systemd-confext.service
+# Do not ship ukify on the target
+do_install:append() {
+    rm -f ${D}${bindir}/ukify
+    rm -rf ${D}${nonarch_libdir}/systemd/ukify
 }

@@ -1,11 +1,6 @@
-# Raspberry Pi Zero 2 W - boot + rootfs + shared /var
-# Layout:
-#   p1 = boot (FAT)
-#   p2 = rootfs
-#   p3 = var (btrfs, expand later)
+# Raspberry Pi Zero 2 W
+# p1 boot (FAT) | p2 root (squashfs, immutable) | p3 var (btrfs)
 
 part /boot --source bootimg-partition --ondisk mmcblk0 --fstype=vfat --label boot --active --align 4096 --size 128
-
-part / --source rootfs --ondisk mmcblk0 --fstype=ext4 --label rootfs --align 4096 --size 1024
-
+part / --source rootfs --ondisk mmcblk0 --fstype=squashfs --label rootfs --align 4096
 part /var --source rawcopy --sourceparams="file=chrif-image-var-raspberrypi0-2w-64.btrfs" --ondisk mmcblk0 --fstype=btrfs --label var --align 4096 --size 512
