@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Yocto Project – Learning & Custom BSP
 
 A practical, beginner-friendly Yocto repository focused on real embedded Linux skills.
@@ -10,7 +9,7 @@ This project teaches you how to:
 - Create and apply **device tree overlays**
 
 It follows the documentation-first philosophy of [TripleHelixConsulting/meta-thc-v1](https://github.com/TripleHelixConsulting/meta-thc-v1) while going deeper into BSP topics that most beginner repositories avoid.
-=======
+
 # yocto-project — Student Learning Repository (Raspberry Pi Zero 2 W)
 
 > Beginner-friendly Yocto project (docs style inspired by [TripleHelixConsulting/meta-thc-v1](https://github.com/TripleHelixConsulting/meta-thc-v1)).
@@ -31,13 +30,8 @@ Teaching project (not production). Shows: layers/distro/machine/image, Kas pin c
 | Separate `/var` | `chrif-var-mount`, `files/var.mount` |
 | Systemd backport | `meta-chrif-distro/recipes-core/systemd/`, `meson_tags.bbclass` |
 | Kernel fragment | `meta-yfs-bsp/.../btrfs.cfg` (experimental layout) |
->>>>>>> bf7d78a (Fixing docs)
 
----
 
-## Quick Start
-
-<<<<<<< HEAD
 ### Prerequisites
 - Linux host (Ubuntu 22.04 / 24.04 recommended) **or** Docker
 - ~60–80 GB free disk space
