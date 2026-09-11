@@ -28,8 +28,6 @@ This project goes **beyond "hello world"** by teaching:
 | 💾 Separate `/var` | `chrif-var-mount`, `files/var.mount` |
 | ⚙️ Systemd backport | `meta-chrif-distro/recipes-core/systemd/`, `meson_tags.bbclass` |
 | 🔧 Kernel fragment | `meta-yfs-bsp/.../btrfs.cfg` (experimental layout) |
-| **🚗 Out-of-tree drivers** | Real kernel driver examples + integration |
-| **🌳 Device tree overlays** | Working DT overlay examples with enable instructions |
 
 ---
 
@@ -113,46 +111,28 @@ yocto-project/
 
 ---
 
-## 📚 Documentation Path (Recommended Order)
+## 📚 Documentation
 
-Start here and follow the progression:
+Explore the `docs/` folder for detailed guides on:
 
-1. **[01 - Yocto Basics](docs/01-YOCTO-BASICS.md)**  
-   Concepts explained simply
-
-2. **[02 - Setup & Build](docs/02-SETUP-AND-BUILD.md)**  
-   Detailed setup and build instructions
-
-3. **[03 - Project Structure](docs/03-PROJECT-STRUCTURE.md)**  
-   How the layers work together
-
-4. **[04 - First Boot](docs/04-FIRST-BOOT.md)**  
-   Flashing, serial console, SSH, WiFi
-
-5. **[05 - Kernel Drivers](docs/05-KERNEL-DRIVERS.md)** ⭐  
-   **Out-of-tree driver example**
-
-6. **[06 - Device Tree Overlays](docs/06-DEVICE-TREE-OVERLAYS.md)** ⭐  
-   **Device tree overlay examples**
-
-7. **[07 - Adding Recipes](docs/07-ADDING-RECIPES.md)**  
-   Creating and integrating custom recipes
-
-8. **[08 - Troubleshooting](docs/08-TROUBLESHOOTING.md)**  
-   Common issues and solutions
+- Yocto basics and concepts
+- Setup and build procedures
+- Project structure and layers
+- First boot and device configuration
+- Custom recipes and configurations
+- Troubleshooting and common issues
 
 ---
 
-## 🎯 Why This Repository?
+## 🎯 Differentiation
 
-Most beginner Yocto projects stop at userspace. **This one doesn't.**
+Most beginner Yocto projects stop at userspace. This repository takes a practical, educational approach to embedded Linux by emphasizing:
 
-✅ **Complete, documented out-of-tree kernel driver example**  
-✅ **Working device tree overlay examples with clear instructions**  
-✅ **Explanations of BSP layer structure and philosophy**  
-✅ **Clean, educational layer organization**
-
-These are the topics that turn a "hello world" image into **real embedded systems knowledge**.
+- Real, working Kas configurations
+- Clean layer organization with clear responsibilities
+- Scarthgap-based custom distro
+- Systemd integration patterns
+- Board Support Package structure for Raspberry Pi
 
 ---
 
@@ -167,7 +147,7 @@ These are the topics that turn a "hello world" image into **real embedded system
 
 ### 🔄 Next Focus
 
-- Expand kernel driver and device tree overlay examples
+- Expand examples and documentation
 - Add more machine configurations
 - Improve first-boot experience
 
@@ -188,4 +168,4 @@ MIT (see `COPYING.MIT` in each layer)
 
 ## 🚀 Getting Started
 
-**→ [Start with the Quick Start above, then dive into the `docs/` folder →](docs/01-YOCTO-BASICS.md)**
+**→ [Start with the Quick Start above, then explore the `docs/` folder →](docs/)**
